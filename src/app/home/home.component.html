@@ -1,0 +1,30 @@
+<app-content>
+  <a class="btn btn-success" [routerLink]="[ '/home/create']">create</a>
+  <br />
+  <br />
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>personID</th>
+        <th>citizenID</th>
+        <th>name</th>
+        <th>email</th>
+        <th>จัดการข้อมูล</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of persons.rs">
+        <td>{{item.personID}}</td>
+        <td>{{item.citizenID}}</td>
+        <td>{{item.name}} {{item.lastname}}</td>
+        <td>{{item.email}}</td>
+        <td>
+          <div class="btn-group">
+            <button type="button" (click)="deletePerson(item.personID)" class="btn btn-danger">ลบ</button>
+            <button type="button" [routerLink]="['/home/edit',item.personID]" class="btn btn-warning">แกไข</button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</app-content>
