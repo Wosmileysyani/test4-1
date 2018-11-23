@@ -70,6 +70,7 @@ export class CreateComponent implements OnInit {
       this.personSV
         .CreatePerson(JSON.stringify(this.form.value))
         .then(res => {
+          $.notify('เพิ่มข้อมูลแล้ว', 'success');
           this.router.navigate(['/', 'home']);
         })
         .catch(err => this.errorMsg = err);
@@ -77,6 +78,7 @@ export class CreateComponent implements OnInit {
       this.personSV
         .updatePerson(JSON.stringify(this.form.value))
         .then(res => {
+          $.notify('แก้ไขเสร็จสิ้น', 'success');
           this.router.navigate(['/', 'home']);
         })
         .catch(err => this.errorMsg = err);

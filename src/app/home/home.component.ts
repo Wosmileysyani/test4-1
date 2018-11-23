@@ -25,16 +25,18 @@ export class HomeComponent implements OnInit {
   }
 
   deletePerson(personID) {
-    console.log(personID);
-    const data = {
-      personID: personID
-    };
-    this.personSV
-      .deletePerson(data)
-      .then(res => {
-        this.fetchPerson();
-      })
-      .catch(err => this.errMsg = err);
+    const result = confirm('ยืนยันการลบ?');
+    if (result) {
+      const data = {
+        personID: personID
+      };
+      this.personSV
+        .deletePerson(data)
+        .then(res => {
+          $.notify('ลบเสร็จสิ้น', 'error');
+          this.fetchPerson();
+        })
+        .catch(err => this.errMsg = err);
+    }
   }
-
 }
